@@ -1,0 +1,57 @@
+<%= form_for(@medical_record) do |f| %>
+  <% if @medical_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medical_record.errors.count, "error") %> prohibited this medical_record from being saved:</h2>
+
+      <ul>
+      <% @medical_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :patient_id %><br>
+    <%= f.number_field :patient_id %>
+  </div>
+  <div class="field">
+    <%= f.label :doctor_id %><br>
+    <%= f.number_field :doctor_id %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br>
+    <%= f.number_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label :triglycerides %><br>
+    <%= f.number_field :triglycerides %>
+  </div>
+  <div class="field">
+    <%= f.label :glycated_hemoglobin %><br>
+    <%= f.number_field :glycated_hemoglobin %>
+  </div>
+  <div class="field">
+    <%= f.label :cholesterol %><br>
+    <%= f.number_field :cholesterol %>
+  </div>
+  <div class="field">
+    <%= f.label :systolic %><br>
+    <%= f.number_field :systolic %>
+  </div>
+  <div class="field">
+    <%= f.label :diastolic %><br>
+    <%= f.number_field :diastolic %>
+  </div>
+  <div class="field">
+    <%= f.label :height %><br>
+    <%= f.number_field :height %>
+  </div>
+  <div class="field">
+    <%= f.label :bmi %><br>
+    <%= f.number_field :bmi %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

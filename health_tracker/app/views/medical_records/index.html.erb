@@ -1,0 +1,43 @@
+<h1>Listing medical_records</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Patient</th>
+      <th>Doctor</th>
+      <th>Weight</th>
+      <th>Triglycerides</th>
+      <th>Glycated hemoglobin</th>
+      <th>Cholesterol</th>
+      <th>Systolic</th>
+      <th>Diastolic</th>
+      <th>Height</th>
+      <th>Bmi</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @medical_records.each do |medical_record| %>
+      <tr>
+        <td><%= medical_record.patient_id %></td>
+        <td><%= medical_record.doctor_id %></td>
+        <td><%= medical_record.weight %></td>
+        <td><%= medical_record.triglycerides %></td>
+        <td><%= medical_record.glycated_hemoglobin %></td>
+        <td><%= medical_record.cholesterol %></td>
+        <td><%= medical_record.systolic %></td>
+        <td><%= medical_record.diastolic %></td>
+        <td><%= medical_record.height %></td>
+        <td><%= medical_record.bmi %></td>
+        <td><%= link_to 'Show', medical_record %></td>
+        <td><%= link_to 'Edit', edit_medical_record_path(medical_record) %></td>
+        <td><%= link_to 'Destroy', medical_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Medical record', new_medical_record_path %>

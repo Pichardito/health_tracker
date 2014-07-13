@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :medical_records
+
   devise_for :patients
   devise_for :doctors
   root to: 'welcome#index'

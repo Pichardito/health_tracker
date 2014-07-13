@@ -9,3 +9,4 @@ class Doctor < ActiveRecord::Base
          has_many :patients, through: :medical_records
 end
 
+
