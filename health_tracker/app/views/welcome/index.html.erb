@@ -1,4 +1,17 @@
 <h1>Hello</h1>
 
-<h3>If you're a doctor, sign up <%= link_to "here", new_doctor_registration_path %></h3>
-<h3>If you're a patient, sign up <%= link_to "here", new_patient_registration_path %></h3>
+<% if doctor_signed_in? %>
+	<%= link_to "Log out", destroy_doctor_session_path, method: :delete %>
+<% else %>
+	<h3>If you're a doctor, sign up <%= link_to "here", new_doctor_registration_path %></h3>
+	<p>Or if you already signed up with us, sign in <%= link_to "here", new_doctor_session_path %></p>
+<% end %>
+
+
+<% if patient_signed_in? %>
+	<%= link_to "Log out", destroy_patient_session_path, method: :delete %>
+
+<% else %>
+	<h3>If you're a patient, sign up <%= link_to "here", new_patient_registration_path %></h3>
+	<p>Or if you already signed up with us, sign in <%= link_to "here", new_patient_session_path %></p>
+<% end %>
