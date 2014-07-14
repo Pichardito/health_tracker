@@ -1,28 +1,25 @@
 class MedicalRecordsController < ApplicationController
   before_action :set_medical_record, only: [:show, :edit, :update, :destroy]
 
-  # GET /medical_records
-  # GET /medical_records.json
+  
   def index
     @medical_records = MedicalRecord.all
   end
 
-  # GET /medical_records/1
-  # GET /medical_records/1.json
+  
   def show
   end
 
-  # GET /medical_records/new
+  
   def new
     @medical_record = MedicalRecord.new
   end
 
-  # GET /medical_records/1/edit
+ 
   def edit
   end
 
-  # POST /medical_records
-  # POST /medical_records.json
+ 
   def create
     @medical_record = MedicalRecord.new(medical_record_params)
 
@@ -37,8 +34,7 @@ class MedicalRecordsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /medical_records/1
-  # PATCH/PUT /medical_records/1.json
+  
   def update
     respond_to do |format|
       if @medical_record.update(medical_record_params)
@@ -51,8 +47,7 @@ class MedicalRecordsController < ApplicationController
     end
   end
 
-  # DELETE /medical_records/1
-  # DELETE /medical_records/1.json
+  
   def destroy
     @medical_record.destroy
     respond_to do |format|
@@ -61,13 +56,13 @@ class MedicalRecordsController < ApplicationController
     end
   end
 
+
   private
-    # Use callbacks to share common setup or constraints between actions.
+    
     def set_medical_record
       @medical_record = MedicalRecord.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def medical_record_params
       params.require(:medical_record).permit(:patient_id, :doctor_id, :weight, :triglycerides, :glycated_hemoglobin, :cholesterol, :systolic, :diastolic, :height, :bmi)
     end
