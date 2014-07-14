@@ -84,5 +84,5 @@ Rails.application.configure do
 
   # Required for heroku
   # Set the actual url at some point
-  config.action_mailer.default_url_options = { :host => 'http://stormy-sierra-7309.herokuapp.com/' }
+  config.action_mailer.default_url_options = { :host => 'http://health-tracker.herokuapp.com/' }
 end
