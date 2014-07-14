@@ -12,7 +12,7 @@ class MedicalRecordsController < ApplicationController
 
   
   def new
-    @medical_record = MedicalRecord.new
+    @medical_record = current_doctor.medical_records.build
   end
 
  
@@ -21,7 +21,7 @@ class MedicalRecordsController < ApplicationController
 
  
   def create
-    @medical_record = MedicalRecord.new(medical_record_params)
+    @medical_record = current_doctor.medical_records.build(medical_record_params)
 
     respond_to do |format|
       if @medical_record.save
