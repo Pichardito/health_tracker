@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714154510) do
+ActiveRecord::Schema.define(version: 20140714184738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,14 +38,14 @@ ActiveRecord::Schema.define(version: 20140714154510) do
   create_table "medical_records", force: true do |t|
     t.integer  "patient_id"
     t.integer  "doctor_id"
-    t.integer  "weight"
-    t.integer  "triglycerides"
-    t.integer  "glycated_hemoglobin"
-    t.integer  "cholesterol"
+    t.float    "weight"
+    t.float    "triglycerides"
+    t.float    "glycated_hemoglobin"
+    t.float    "cholesterol"
     t.integer  "systolic"
     t.integer  "diastolic"
-    t.integer  "height"
-    t.integer  "bmi"
+    t.float    "height"
+    t.float    "bmi"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
