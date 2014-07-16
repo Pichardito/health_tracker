@@ -27,6 +27,7 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'd3-rails'
 
 
 

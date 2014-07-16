@@ -1,0 +1,18 @@
+<h1>List of your patients</h1>
+
+
+
+<%= link_to 'New Patient', new_patient_path%>
+
+<ul>
+	<% current_doctor.patients.each do |patient| %>
+		<li>
+			<%= patient.name %>
+			<%= link_to 'Show', patient %>
+			<%= link_to 'Edit', edit_patient_path(patient) %>
+			<%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %>
+			<%= link_to 'New Medical record', new_patient_record_path(patient) %>
+
+		</li>
+	<% end %>
+</ul>

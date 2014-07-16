@@ -1,6 +1,6 @@
 class CreateMedicalRecords < ActiveRecord::Migration
   def change
-    create_table :medical_records do |t|
+    create_table :records do |t|
       t.integer :patient_id
       t.integer :doctor_id
       t.integer :weight

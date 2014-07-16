@@ -1,5 +1,5 @@
 class ChangeColumnTypeInMedicalRecords < ActiveRecord::Migration
   def change
-  	change_column :medical_records, :weight, :float
+  	change_column :records, :weight, :float
   end
 end
