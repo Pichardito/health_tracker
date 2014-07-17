@@ -1,3 +1,16 @@
+$.ajax({
+	url: '/patients' + patient_id,
+	method: 'get',
+	dataType: 'json',
+	data: 
+	success: function(data){
+		
+	}
+
+})
+
+
+
 var h = 100
 var w = 200;
 

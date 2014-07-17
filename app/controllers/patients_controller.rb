@@ -23,7 +23,7 @@ class PatientsController < ApplicationController
 		record.doctor = current_doctor
 		record.patient = patient
 		record.save
-		redirect_to '/'
+		redirect_to '/list-of-patients'
 	end
 
 
@@ -42,7 +42,7 @@ class PatientsController < ApplicationController
 		patient = Patient.find(params[:id])
 		patient.destroy
 		respond_to do |format|
-      	format.html { redirect_to patients_url, notice: 'Patient was successfully destroyed.' }
+      	format.html { redirect_to '/list-of-patients', notice: 'Patient was successfully destroyed.' }
     end
 	end
 

@@ -2,3 +2,14 @@
   <strong>Name:</strong>
   <%= @patient.name %>
 </p>
+
+<% @patient.records.each do |record| %>
+	<p><%= record.weight %></p>
+	<p><%= record.triglycerides %></p>
+	<p><%= record.glycated_hemoglobin %></p>
+	<p><%= record.cholesterol %></p>
+	<p><%= record.systolic %></p>
+	<p><%= record.diastolic %></p>
+	<p><%= record.height %></p>
+	<p><%= record.bmi %></p>
+<% end %>

@@ -12,7 +12,7 @@ class RecordsController < ApplicationController
   
   def new
     @patient = Patient.find(params[:patient_id])
-    @record = current_doctor.records.build
+    @record = current_doctor.records.new({patient: @patient})
   end
 
  
@@ -22,7 +22,8 @@ class RecordsController < ApplicationController
  
   def create
     binding.pry
-    @record = current_doctor.records.build(record_params)
+    @record = current_doctor.records.new(record_params)
+    @record.patient_id = params[:patient_id]
 
     respond_to do |format|
       if @record.save
@@ -56,8 +57,13 @@ class RecordsController < ApplicationController
     patient = Patient.find(params[:patient_id])
     data = patient.record.map do |record| 
       hash = {}
-      hash[:cholesterol] = record.cholesterol
-      hash[:whatever] = record.whatever
+      hash[:weight] = record.weight
+      hash[:triglycerides] = record.triglycerides
+      hash[:glycated_hemoglobin] = record.glycated_hemoglobin
+      hash[:chelesterol] = record.chelesterol
+      hash[:systolic] = record.systolic
+      hash[:diastolic] = record.diastolic
+      hash[:bmi] = record.bmi
       
     end
     render json: patient.records
