@@ -21,7 +21,7 @@ class RecordsController < ApplicationController
 
  
   def create
-    binding.pry
+    
     @record = current_doctor.records.new(record_params)
     @record.patient_id = params[:patient_id]
 

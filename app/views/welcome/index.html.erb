@@ -1,11 +1,16 @@
-<h1>Hello</h1>
+<div class="center">
+	<h2>Welcome to HealthTracker, the site where physicians can keep track of patient outcomes</h2>
+</div>
 
+<div class="jumbotron center">
 <% if doctor_signed_in? %>
-	<%= link_to "Log out", destroy_doctor_session_path, method: :delete %>
-<% else %>
-	<h3>If you're a doctor, sign up <%= link_to "here", new_doctor_registration_path %></h3>
-	<p>Or if you already signed up with us, sign in <%= link_to "here", new_doctor_session_path %></p>
-<% end %>
+		<%= link_to "Log out", destroy_doctor_session_path, class: "btn btn-default btn-lg", method: :delete %>
+	<% else %>
+		<h3>If you're a doctor, sign up <%= link_to "here", new_doctor_registration_path, class: "btn btn-default btn-lg" %></h3>
+		<p>Or if you already signed up with us, sign in <%= link_to "here", new_doctor_session_path, class: "btn btn-primary btn-lg" %></p>
+	<% end %>
 
-
-<%= link_to 'Patients', doctor_root_path, class: "btn btn-primary btn-lg" %>
+	<% if doctor_signed_in? %>
+		<%= link_to 'Patients', doctor_root_path, class: "btn btn-primary btn-lg" %>
+	<% end %>
+</div>
