@@ -55,17 +55,17 @@ class RecordsController < ApplicationController
 
   def d3_data 
     patient = Patient.find(params[:patient_id])
-    data = patient.record.map do |record| 
-      hash = {}
-      hash[:weight] = record.weight
-      hash[:triglycerides] = record.triglycerides
-      hash[:glycated_hemoglobin] = record.glycated_hemoglobin
-      hash[:chelesterol] = record.chelesterol
-      hash[:systolic] = record.systolic
-      hash[:diastolic] = record.diastolic
-      hash[:bmi] = record.bmi
+    # data = patient.record.map do |record| 
+    #   hash = {}
+    #   hash[:weight] = record.weight
+    #   hash[:triglycerides] = record.triglycerides
+    #   hash[:glycated_hemoglobin] = record.glycated_hemoglobin
+    #   hash[:chelesterol] = record.chelesterol
+    #   hash[:systolic] = record.systolic
+    #   hash[:diastolic] = record.diastolic
+    #   hash[:bmi] = record.bmi
       
-    end
+    # end
     render json: patient.records
   end
 

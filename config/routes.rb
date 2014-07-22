@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
 
   get '/list-of-patients' => 'doctor_welcome#index', as: 'doctor_root'
+  get '/getting-visualization/:patient_id' => 'records#d3_data' 
   
 
   root to: 'welcome#index'
