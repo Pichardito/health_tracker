@@ -1,17 +1,6 @@
-$(function(){
-		//make ajax call 
-		$.ajax({
-	url: '/getting-visualization/' + patient_id 
-	method: 'get',
-	dataType: 'json',
-	data: 
-	success: function(data){
-			generateGraph(data);
-	}
 
-})
 	// take data and make d3 visualization
-
+function generateGraph(patient_id){
 	var margin = {top: 20, right: 80, bottom: 30, left: 50},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
@@ -39,29 +28,41 @@ var line = d3.svg.line()
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.units); });
 
+// var lineTriglycerides = d3.svg.line()
+//   	.interpolate("basis")
+//   	.x(function(d) { return x(d.created_at); })
+//   	.y(function(d) { return y(d.triglycerides); });
+
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json("data.json", function(error, data) {
-  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
 
-  data.forEach(function(d) {
-    d.date = parseDate(d.date);
+
+d3.json('/getting-visualization/'+patient_id, function(error, data) {
+
+  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
+    data.forEach(function(d) {
+    d.updated_at = parseDate(d.updated_at);
   });
 
   var healthData = color.domain().map(function(name) {
-    return {
-      name: name,
-      values: data.map(function(d) {
-        return {date: d.date, units: +d[name]};
-      })
-    };
+     if (name !== 'id' ){
+	     return {
+	      name: name,
+	      values: data.map(function(d) {
+	         return {date: d.created_at, units: +d[name]};
+	      })
+	    };
+	   }
   });
+  healthData.shift()
 
-  x.domain(d3.extent(data, function(d) { return d.date; }));
+  
+
+  x.domain(d3.extent(data, function(d) { return d.updated_at; }));
 
   y.domain([
     d3.min(healthData, function(c) { return d3.min(c.values, function(v) { return v.units; }); }),
@@ -81,7 +82,7 @@ d3.json("data.json", function(error, data) {
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Temperature (ºF)");
+      .text("Health Data Points");
 
   var health = svg.selectAll(".health")
       .data(healthData)
@@ -95,11 +96,14 @@ d3.json("data.json", function(error, data) {
 
   health.append("text")
       .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
-      .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.units) + ")"; })
+      .attr("transform", function(d) { return "translate(" + x(d.value.updated_at) + "," + y(d.value.units) + ")"; })
       .attr("x", 3)
       .attr("dy", ".35em")
       .text(function(d) { return d.name; });
 });
+}
+
+
 
 
 // var h = 100
@@ -128,4 +132,3 @@ d3.json("data.json", function(error, data) {
 // "stroke": "purple",
 // "stroke-width": 2,
 // "fill": "none"
-});

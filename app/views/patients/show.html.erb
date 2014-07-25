@@ -14,4 +14,30 @@
 	<p><%= record.bmi %></p>
 <% end %>
 
+<div class="health">
+	
+</div>
 
+<script>
+	
+	$(function(){
+		//make ajax call
+
+	var full_url = document.URL; // Get current url
+	var url_array = full_url.split('/') // Split the string into an array with / as separator
+	var last_segment = url_array[url_array.length-1];
+	generateGraph(last_segment);
+
+	// 	$.ajax({
+	
+	// url: '/getting-visualization/' + last_segment, 
+	// method: 'GET',
+	// dataType: 'json',
+	// success: function(data){
+	// 		generateGraph(data);
+	// 	}  
+
+	// })
+})
+
+</script>
