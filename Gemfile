@@ -16,6 +16,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'devise', '~> 3.1.0.rc2' 
+gem 'highcharts-rails', '~> 4.0.1'
+
 
 group :production do
   gem 'rails_12factor'
