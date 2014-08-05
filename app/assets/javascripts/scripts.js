@@ -39,7 +39,7 @@ var modifyResult = function(objData){
       seriesData[k].data.push(objData[i][seriesData[k].name]);
       }
   }
-alert(seriesData);
+
 
 $('#chartContainer').highcharts({
         title: {
